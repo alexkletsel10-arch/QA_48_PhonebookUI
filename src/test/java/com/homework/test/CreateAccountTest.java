@@ -13,6 +13,7 @@ public class CreateAccountTest extends TestBase {
         //Select gender radio button
         driver.findElement(By.cssSelector("#gender-male")).click();
         //driver.findElement(By.cssSelector("#gender-male")).clear();
+        //findElement(By.cssSelector("#gender-female")).click()
         //Enter first name
         driver.findElement(By.cssSelector("#FirstName")).click();
         driver.findElement(By.cssSelector("#FirstName")).clear();
