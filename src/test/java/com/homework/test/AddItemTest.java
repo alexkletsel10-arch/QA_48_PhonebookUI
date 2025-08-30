@@ -50,7 +50,7 @@ public class AddItemTest extends TestBase {
     }
 
 
-    @AfterMethod(enabled = false)
+    @AfterMethod
     public void postConditionRemove(){
         //Mark CheckBox
         driver.findElement(By.name("removefromcart")).click();
