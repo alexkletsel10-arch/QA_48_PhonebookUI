@@ -29,4 +29,13 @@ public class TestBase {
     }
 
 
+    public void type(By locator, String text) {
+        click(locator);
+        driver.findElement(locator).clear();
+        driver.findElement(locator).sendKeys(text);
+    }
+
+    public void click(By locator) {
+        driver.findElement(locator).click();
+    }
 }

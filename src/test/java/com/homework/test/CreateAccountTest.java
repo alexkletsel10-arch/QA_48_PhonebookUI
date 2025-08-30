@@ -7,44 +7,35 @@ import org.testng.annotations.Test;
 
 public class CreateAccountTest extends TestBase {
     @Test
-    public void newUserRegistrationPositiveTest(){
+    public void newUserRegistrationPositiveTest() {
+        int i = (int) ((System.currentTimeMillis()/1000)%3600);
         //click on Register link
-        driver.findElement(By.cssSelector(".ico-register")).click();
+        click(By.cssSelector(".ico-register"));
         //Select gender radio button
-        driver.findElement(By.cssSelector("#gender-male")).click();
+        click(By.cssSelector("#gender-male"));
         //driver.findElement(By.cssSelector("#gender-male")).clear();
         //findElement(By.cssSelector("#gender-female")).click()
         //Enter first name
-        driver.findElement(By.cssSelector("#FirstName")).click();
-        driver.findElement(By.cssSelector("#FirstName")).clear();
-        driver.findElement(By.cssSelector("#FirstName")).sendKeys("Aaron");
+        type(By.cssSelector("#FirstName"), "Aaron");
         //Enter lastname
-        driver.findElement(By.cssSelector("[name='LastName']")).click();
-        driver.findElement(By.cssSelector("[name='LastName']")).clear();
-        driver.findElement(By.cssSelector("[name='LastName']")).sendKeys("Kennedy");
+        type(By.cssSelector("[name='LastName']"), "Kennedy");
         //Enter Email
-        driver.findElement(By.cssSelector("#Email")).click();
-        driver.findElement(By.cssSelector("#Email")).clear();
-        driver.findElement(By.cssSelector("#Email")).sendKeys("aaron18@gmail.com");
+        type(By.cssSelector("#Email"), "aaron18"+i+"@gmail.com");
         //Enter Password
-        driver.findElement(By.cssSelector("#Password")).click();
-        driver.findElement(By.cssSelector("#Password")).clear();
-        driver.findElement(By.cssSelector("#Password")).sendKeys("Cadi26$lac");
+        type(By.cssSelector("#Password"), "Cadi26$lac");
         //Enter Confirm password
-        driver.findElement(By.cssSelector("#ConfirmPassword")).click();
-        driver.findElement(By.cssSelector("#ConfirmPassword")).clear();
-        driver.findElement(By.cssSelector("#ConfirmPassword")).sendKeys("Cadi26$lac");
+        type(By.cssSelector("#ConfirmPassword"), "Cadi26$lac");
         // Click on register button
-        driver.findElement(By.cssSelector(".button-1.register-next-step-button")).click();
+        click(By.cssSelector(".button-1.register-next-step-button"));
         //verify LogOut link is displayed
         Assert.assertTrue(isElementPresent(By.xpath("//a[text()='Log out']")));
         //verify Continue button is displayed
         Assert.assertTrue(isElementPresent(By.cssSelector("input[value='Continue']")));
 
 
-
-
     }
 
 
 }
+
+

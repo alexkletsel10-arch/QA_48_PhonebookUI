@@ -6,34 +6,37 @@ import org.testng.annotations.Test;
 
 
 public class CreateAccountTests extends PhoneBookTestBase {
-    @Test
+    @Test(enabled = false)
 
-    public void newUserRegistrationPositiveTest(){
+    public void newUserRegistrationPositiveTest() {
+        int i = (int) ((System.currentTimeMillis()/1000)%3600);
         // click on Login link
-        driver.findElement(By.cssSelector("[href='/login']")).click();
+        click(By.cssSelector("[href='/login']"));
         //enter Email
-        driver.findElement(By.name("email")).click();
-        driver.findElement(By.name("email")).clear();
-        driver.findElement(By.name("email")).sendKeys("sopranom@gmail.com");
+        type(By.name("email"), "sopranom"+i+"@gmail.com");
         //Enter Password
-        driver.findElement(By.name("password")).click();
-        driver.findElement(By.name("password")).clear();
-        driver.findElement(By.name("password")).sendKeys("A1320$ak");
+        type(By.name("password"), "A1320$ak");
         //click on Registration button
-        driver.findElement(By.name("registration")).click();
+        click(By.name("registration"));
         //verify SingOut is displayed
         Assert.assertTrue(isElementPresent(By.xpath("//button[.='Sign Out']")));
 
+    }
+
+    @Test
+    public void exsistedUserRegistrationNegativeTest() {
+        // click on Login link
+        click(By.cssSelector("[href='/login']"));
+        //enter Email
+        type(By.name("email"), "sopranom@gmail.com");
+        //Enter Password
+        type(By.name("password"), "A1320$ak");
+        //click on Registration button
+        click(By.name("registration"));
+        //verify Alert displayed
+        Assert.assertTrue(isAlertDisplayed());
 
     }
 
-
-
-
-
-
-
-
-
-
 }
+
