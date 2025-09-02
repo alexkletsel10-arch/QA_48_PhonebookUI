@@ -1,6 +1,5 @@
 package com.homework.test;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -8,32 +7,29 @@ import org.testng.annotations.Test;
 public class CreateAccountTest extends TestBase {
     @Test
     public void newUserRegistrationPositiveTest() {
-        int i = (int) ((System.currentTimeMillis()/1000)%3600);
+        //int i = (int) ((System.currentTimeMillis()/1000)%3600);
         //click on Register link
-        click(By.cssSelector(".ico-register"));
+        clickOnRegisterLink();
         //Select gender radio button
-        click(By.cssSelector("#gender-male"));
+        clickOnGenderRadioButton();
         //driver.findElement(By.cssSelector("#gender-male")).clear();
         //findElement(By.cssSelector("#gender-female")).click()
         //Enter first name
-        type(By.cssSelector("#FirstName"), "Aaron");
-        //Enter lastname
-        type(By.cssSelector("[name='LastName']"), "Kennedy");
-        //Enter Email
-        type(By.cssSelector("#Email"), "aaron18"+i+"@gmail.com");
-        //Enter Password
-        type(By.cssSelector("#Password"), "Cadi26$lac");
-        //Enter Confirm password
-        type(By.cssSelector("#ConfirmPassword"), "Cadi26$lac");
-        // Click on register button
-        click(By.cssSelector(".button-1.register-next-step-button"));
+        fillInRegisterForm(new User()
+                .setFirstName("Aaron")
+                .setLastName( "Kennedy")
+                .setEmail( "aaron18@gmail.com")
+                .setPassword( "Cadi26$lac")
+                .setConfirmPassword("Cadi26$lac"));
+        clickOnRegistrationButton();
         //verify LogOut link is displayed
-        Assert.assertTrue(isElementPresent(By.xpath("//a[text()='Log out']")));
+        Assert.assertTrue(isLogOutButtonPresent());
         //verify Continue button is displayed
-        Assert.assertTrue(isElementPresent(By.cssSelector("input[value='Continue']")));
+        Assert.assertTrue(isContinueButtonPresent());
 
 
     }
+
 
 
 }
