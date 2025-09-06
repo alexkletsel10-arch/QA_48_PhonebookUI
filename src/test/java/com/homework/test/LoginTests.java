@@ -1,7 +1,6 @@
 package com.homework.test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import com.homeworkphoneb.models.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,34 +8,32 @@ public class LoginTests extends TestBase {
     @Test
     public void loginPositiveTest() {
         //click on Login link
-        clickOnLoginLink();
+        app.getUser().clickOnLoginLink();
         //Enter Email
-        fillLoginForm(new User().setEmail("aaron18@gmail.com").setPassword("Cadi26$lac"));
+        app.getUser().fillLoginForm(new User().setEmail("aaron18@gmail.com").setPassword("Cadi26$lac"));
         // click on Login button
-        clickOnLoginButton();
+        app.getUser().clickOnLoginButton();
         //verify Logout Button is displayed
-        Assert.assertTrue(isLogOutButtonPresent());
+        Assert.assertTrue(app.getUser().isLogOutButtonPresent());
 
 
     }
 
-    @Test(enabled = false)
+    @Test
     public void loginNegativeWithoutEmailTest() {
         //click on Login link
-        clickOnLoginLink();
+        app.getUser().clickOnLoginLink();
         //Enter Email
-        fillLoginForm(new User().setPassword("Cadi26$lac"));
+        app.getUser().fillLoginForm(new User().setPassword("Cadi26$lac"));
         // click on Login button
-        clickOnLoginButton();
-        //verify Logout Button is displayed
-
-
-
-    }
-
-
+        app.getUser().clickOnLoginButton();
+        //verify Error massege displayed
+        Assert.assertTrue(app.getUser().isErrorMassagePresent());
 
     }
+
+
+}
 
 
 

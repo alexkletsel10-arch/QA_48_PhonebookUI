@@ -1,37 +1,34 @@
 package com.homework.test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import com.homeworkphoneb.models.User;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 public class AddItemTest extends TestBase {
     @BeforeMethod
     public void preconditionsAdd() {
-        clickOnLoginLink();
+        app.getUser().clickOnLoginLink();
         //Enter Email
-        fillLoginForm(new User().setEmail("aaron18@gmail.com").setPassword( "Cadi26$lac"));
+        app.getUser().fillLoginForm(new User().setEmail("aaron18@gmail.com").setPassword( "Cadi26$lac"));
         // click on Login button
-        clickOnLoginButton();
+        app.getUser().clickOnLoginButton();
 
 
     }
     @Test
     public void addItemToShoppingCart() {
         //Select Computer category in header
-        selectComputerCategory();
+        app.getProduct().selectComputerCategory();
         //Select Notebooks On computers page click on picture
-        selectItemNoteBook();
+        app.getProduct().selectItemNoteBook();
         //click on Add to cart Button
-        clickOnAddToCartButtton();
+        app.getProduct().clickOnAddToCartButtton();
         // click On Shopping cart link
-        clickOnShoppingCartLink();
-        //verify item is added
-        Assert.assertTrue(isItemAdded("14.1-inch Laptop"));
+        app.getProduct().clickOnShoppingCartLink();
+        app.getProduct().pause(200);
+        Assert.assertTrue(app.getProduct().isItemAdded("14.1-inch Laptop"));
+
 
 
 

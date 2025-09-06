@@ -1,6 +1,6 @@
 package com.homework.test;
 
-import org.openqa.selenium.By;
+import com.homeworkphoneb.models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -10,32 +10,31 @@ import org.testng.annotations.Test;
 public class DeleteItem extends TestBase {
     @BeforeMethod
     public void preconditionsDelete() {
-        clickOnLoginLink();
-        fillLoginForm(new User().setEmail("aaron18@gmail.com").setPassword("Cadi26$lac"));
-        clickOnLoginButton();
+        app.getUser().clickOnLoginLink();
+        app.getUser().fillLoginForm(new User().setEmail("aaron18@gmail.com").setPassword("Cadi26$lac"));
+        app.getUser().clickOnLoginButton();
 
 
         //Select Computer category in header
-        selectComputerCategory();
+        app.getProduct().selectComputerCategory();
         //Select Notbooks On computers page click on picture
-        selectItemNoteBook();
+        app.getProduct().selectItemNoteBook();
         //click on addToCartButton
-        clickOnAddToCartButtton();
+        app.getProduct().clickOnAddToCartButtton();
 
     }
 
     @Test
     public void deleteItemFromShoppingCartTest() {
         // click On Shopping cart link
-        clickOnShoppingCartLink();
-        int sizeBefore = sizeOfItems();
+        app.getProduct().clickOnShoppingCartLink();
+        int sizeBefore = app.getProduct().sizeOfItems();
         //Click on check box
-        pause(1000);
-        clickOnCheckBox();
-
-        clickOnUpgradePageButton();
-        pause(1000);
-        int sizeAfter = sizeOfItems();
+        app.getProduct().clickOnCheckBox();
+       //Click on updateButton
+        app.getProduct().clickOnUpgradePageButton();
+        app.getProduct().pause(200);
+        int sizeAfter = app.getProduct().sizeOfItems();
         Assert.assertEquals( sizeAfter,sizeBefore-1);
 
     }

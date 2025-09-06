@@ -1,4 +1,4 @@
-package com.homework.test;
+package com.homeworkphoneb.models;
 
 public class User {
     private String firstName;
