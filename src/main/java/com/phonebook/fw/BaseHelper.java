@@ -13,6 +13,7 @@ public class BaseHelper {
     WebDriver driver;
 
     public BaseHelper(WebDriver driver) {
+
         this.driver = driver;
     }
 

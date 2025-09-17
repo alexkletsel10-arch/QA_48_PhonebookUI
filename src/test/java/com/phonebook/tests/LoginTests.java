@@ -15,6 +15,7 @@ public class LoginTests extends PhoneBookTestBase{
     }
     @Test(priority = 1)
     public void loginPositiveTest(){
+        logger.info("login with data -->"+ UserData.email + "****" + UserData.PASSWORD);
         app.getUser().clickOnLoginLink();
         app.getUser().fillRegisterForm(new User().setEmail(UserData.email).setPassword(UserData.PASSWORD));
         app.getUser().clickOnLoginButton();
