@@ -8,11 +8,14 @@
 *.ipr
 out/
 
-/gradel/
-settings.gradel
-\gradlew
-gradlew/
-gradlew.bat
+# Gradle
+.gradle/
+build/
+
+# IntelliJ
+.idea/
+*.iml
+out/
 
 *.log
 *.png
